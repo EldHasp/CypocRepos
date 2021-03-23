@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TasksDepartments>
+  <Departments>
+    <Deparеment ID="1" Title="Первый отдел"/>
+    <Deparеment ID="2" Title="Второй отдел"/>
+    <Deparеment ID="3" Title="Третий отдел"/>
+  </Departments>
+  <Tasks>
+    <TasksDay ID="11" DepartmentID="1" Date="01-01-2021"
+              InProgress="2" Completed="16"/>
+    <TasksDay ID="12" DepartmentID="2" Date="01-01-2021"
+              InProgress="8" Completed="15"/>
+    <TasksDay ID="13" DepartmentID="3" Date="01-01-2021"
+              InProgress="5" Completed="13"/>
+  </Tasks>
+</TasksDepartments>
+

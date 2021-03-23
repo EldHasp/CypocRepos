@@ -1,0 +1,33 @@
+﻿<Window x:Class="View.QuestsDiaryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="QuestsDiaryWindow" Height="450" Width="800"
+        DataContext="{Binding ViewModel, Source={StaticResource locator}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid ItemsSource="{Binding QuestsRows}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Departament.Title, Mode=OneWay}" ClipboardContentBinding="{x:Null}" IsReadOnly="True" Header="Отдел"/>
+                <DataGridTextColumn Binding="{Binding Completed}" ClipboardContentBinding="{x:Null}" Header="Выполнено"/>
+                <DataGridTextColumn Binding="{Binding InProgress}" ClipboardContentBinding="{x:Null}" Header="В процессе"/>
+                <DataGridTextColumn Binding="{Binding Total, Mode=OneWay}" ClipboardContentBinding="{x:Null}" Header="Всего" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <UniformGrid Columns="3" Grid.Row="1">
+            <Button Content="Предыдущий" Margin="10" Padding="20 5"
+                    Command="{Binding PreviousDateCommand, Mode=OneWay}"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Text="{Binding SelectedDate, Mode=OneWay, StringFormat=\{0:D\}}"/>
+            <Button Content="Следующий" Margin="10" Padding="20 5"
+                    Command="{Binding NextDateCommand, Mode=OneWay}"/>
+        </UniformGrid>
+    </Grid>
+</Window>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<QuestsDiary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Departments>
+    <Deparеment Id="1234" Title="Первый отдел" />
+    <Deparеment Id="5678" Title="Второй отдел" />
+  </Departments>
+  <Quests>
+    <QuestsDay Id="12" DepartmentId="1234" Date="2021-03-15" InProgress="45" Completed="23" />
+    <QuestsDay Id="34" DepartmentId="1234" Date="2021-03-20" InProgress="5" Completed="3" />
+    <QuestsDay Id="56" DepartmentId="5678" Date="2021-03-15" InProgress="12" Completed="11" />
+    <QuestsDay Id="78" DepartmentId="5678" Date="2021-03-20" InProgress="8" Completed="9" />
+  </Quests>
+</QuestsDiary>
