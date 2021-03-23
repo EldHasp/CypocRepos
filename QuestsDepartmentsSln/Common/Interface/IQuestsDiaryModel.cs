@@ -22,5 +22,8 @@ namespace Common.Interfaces
         /// <summary>Изменить задания.</summary>
         /// <param name=""></param>
         void ChangeDailyQuests(IEnumerable<QuestsDepartamentForDayDto> questsDepartaments);
+
+        /// <summary>Событие вызникающее после перезагузки Данных.</summary>
+        event EventHandler Rebooted;
     }
 }

@@ -15,10 +15,11 @@ namespace RepositoryXml
         public IEnumerable<QuestsDepartamentForDayDto> GetDailyQuests(DateTime date)
         {
             date = date.Date;
-            return diary.Quests
+            return diary?.Quests
                 .Where(q => q.Date == date)
                 .Where(q => departaments.ContainsKey(q.DepartmentId))
-                .Select(q => new QuestsDepartamentForDayDto(q.Id, q.Date, departaments[q.DepartmentId], q.Completed, q.InProgress));
+                .Select(q => new QuestsDepartamentForDayDto(q.Id, q.Date, departaments[q.DepartmentId], q.Completed, q.InProgress))
+                ?? Enumerable.Empty<QuestsDepartamentForDayDto>();
         }
 
         public IEnumerable<DepartamentDto> GetDepartaments()
@@ -47,6 +48,8 @@ namespace RepositoryXml
         private QuestsDiaryXml diary;
         private readonly Dictionary<int, DepartamentDto> departaments = new Dictionary<int, DepartamentDto>();
 
+
+        public event EventHandler Rebooted;
         public void Load()
         {
             try
@@ -70,6 +73,8 @@ namespace RepositoryXml
             {
                 departaments.Add(deparеment.Id, new DepartamentDto(deparеment.Id, deparеment.Title));
             }
+
+            Rebooted?.Invoke(this, EventArgs.Empty);
         }
 
         public void Save()
@@ -142,7 +147,8 @@ namespace RepositoryXml
             }
         }
 
-        private static Random random = new Random();
+        private static readonly Random random = new Random();
+
         private int GetNewDailyQuestsId()
         {
             int id;
@@ -152,6 +158,5 @@ namespace RepositoryXml
             } while (diary.Quests.Any(q => q.Id == id));
             return id;
         }
-
     }
 }

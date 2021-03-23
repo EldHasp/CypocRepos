@@ -23,14 +23,13 @@ namespace View
             locator = (Locator)Resources["locator"];
 
             model = new QuestsDiaryModel();
-            model.Load();
             viewModel = new QuestsDiaryViewModel(model);
             locator.ViewModel = viewModel;
+            model.Load();
         }
 
         private void OnExit(object sender, ExitEventArgs e)
         {
-            viewModel.NextDateCommand.Execute(null);
             model.Save();
         }
     }

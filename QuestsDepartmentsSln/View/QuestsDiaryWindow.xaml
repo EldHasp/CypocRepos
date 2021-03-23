@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="QuestsDiaryWindow" Height="450" Width="800"
-        DataContext="{Binding ViewModel, Source={StaticResource locator}}">
+        DataContext="{Binding ViewModel, Source={StaticResource locator}}"
+        Closing="OnClosing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding QuestsRows}" HorizontalAlignment="Center" VerticalAlignment="Center"
+        <DataGrid x:Name="dgQuestsRows" ItemsSource="{Binding QuestsRows}" HorizontalAlignment="Center" VerticalAlignment="Center"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Departament.Title, Mode=OneWay}" ClipboardContentBinding="{x:Null}" IsReadOnly="True" Header="Отдел"/>

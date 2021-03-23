@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Common.Interfaces;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace View
 {
@@ -22,6 +12,13 @@ namespace View
         public QuestsDiaryWindow()
         {
             InitializeComponent();
+        }
+
+        private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            dgQuestsRows.CommitEdit(DataGridEditingUnit.Row, true);
+            if (DataContext is IQuestsDiaryViewModel viewModel)
+                viewModel.Save();
         }
     }
 }

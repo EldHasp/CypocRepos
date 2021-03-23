@@ -19,5 +19,8 @@ namespace Common.Interfaces
 
         /// <summary>Выбрать предыдущий день.</summary>
         RelayCommand PreviousDateCommand { get; }
+
+        /// <summary>Сохраняет данные текущего дня.</summary>
+        void Save();
     }
 }
